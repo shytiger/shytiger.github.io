@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>markdown基础</title>
+      <link href="/2020/08/12/markdown%E5%9F%BA%E7%A1%80/"/>
+      <url>/2020/08/12/markdown%E5%9F%BA%E7%A1%80/</url>
+      
+        <content type="html"><![CDATA[<h1 id="markdown-基础入门"><a href="#markdown-基础入门" class="headerlink" title="markdown 基础入门"></a>markdown 基础入门</h1><h1 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h1><pre><code>换行：两次空格回车  </code></pre><h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p><img src="https://ns-strategy.cdn.bcebos.com/ns-strategy/upload/fc_big_pic/part-00782-3232.jpg" alt="风景">  </p><h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><p><a href="https://github.com/">github</a>  </p><hr><blockquote><p>高亮显示</p></blockquote><h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="无序列表用-或-或-表示"><a href="#无序列表用-或-或-表示" class="headerlink" title="无序列表用 * 或 + 或 - 表示"></a>无序列表用 * 或 + 或 - 表示</h3><ul><li>A  </li><li>B</li></ul><ul><li>C  </li><li>C</li></ul><ul><li>D  </li><li>E<h3 id="有序列表-数字加-标识-如-1"><a href="#有序列表-数字加-标识-如-1" class="headerlink" title="有序列表 数字加. 标识 如 1."></a>有序列表 数字加. 标识 如 1.</h3></li></ul><ol><li>I</li><li>love</li></ol><h3 id="使用列表的注意事项"><a href="#使用列表的注意事项" class="headerlink" title="使用列表的注意事项"></a>使用列表的注意事项</h3><h5 id="如果在单一列表项中包含了多个段落，为了保证渲染正常，-与段落首字母之间必须保留四个空格"><a href="#如果在单一列表项中包含了多个段落，为了保证渲染正常，-与段落首字母之间必须保留四个空格" class="headerlink" title="如果在单一列表项中包含了多个段落，为了保证渲染正常，*与段落首字母之间必须保留四个空格"></a>如果在单一列表项中包含了多个段落，为了保证渲染正常，*与段落首字母之间必须保留四个空格</h5><ul><li>段落一<br>小段一</li><li>段落二<br>小段二<h5 id="另外，如果在列表中加入了区块引用，区域引用标记符也需要缩进4个空格"><a href="#另外，如果在列表中加入了区块引用，区域引用标记符也需要缩进4个空格" class="headerlink" title="另外，如果在列表中加入了区块引用，区域引用标记符也需要缩进4个空格"></a>另外，如果在列表中加入了区块引用，区域引用标记符也需要缩进4个空格</h5></li><li>段落一  <blockquote><p>区块标记1  </p></blockquote></li><li>段落二<blockquote><p>区块标记2  </p></blockquote></li></ul><p>注：记住一个原则，如果在和列表配合使用的时候出现了问题，就缩进一次，四个空格或者一个制表符代表一次缩进。如果一次缩进没有解决问题，那就两次。  </p><hr><h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><hr><h2 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h2><p><em>斜体</em><br><em>斜体</em></p><p><strong>加粗</strong><br><strong>加粗</strong></p><h2 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h2><h3 id="插入代码块"><a href="#插入代码块" class="headerlink" title="插入代码块"></a>插入代码块</h3><p>使用反引号`(esc下那个键)进行包裹，如果是行内代码引用，使用单个反引号包裹。  </p><p>java 的 <code>toString()</code> 与 <code>hashcode</code>  </p><pre><code>     String toString()&amp;#123;     &amp;#125;</code></pre><pre><code>     cout&lt;&lt;&quot;hello world&quot;&lt;&lt;endl;</code></pre><p>插入表格  </p><table><thead><tr><th align="left">表头</th><th align="left">条目1</th><th align="left">条目2</th></tr></thead><tbody><tr><td align="left">项目</td><td align="left">项目1</td><td align="left">项目2</td></tr></tbody></table><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="特殊符号处理"><a href="#特殊符号处理" class="headerlink" title="特殊符号处理"></a>特殊符号处理</h3><pre><code>     \   反斜线     `   反引号     *   星号     _   底线     &amp;#123;&amp;#125;  花括号     []  方括号     ()  括弧     #   井字号     +   加号     -   减号     .   英文句点     !   惊叹号</code></pre><blockquote><p>Markdown使用反斜杠\插入语法中用到的特殊符号。例如，如果你需要插入反斜杠，就连续输入两个反斜杠即可：<code>\\</code> =&gt; \ 。在内容中输入以上特殊符号的时候一定要注意转义，否则将导致内容显示不全，甚至排版混乱。</p></blockquote><h3 id="给文字上色"><a href="#给文字上色" class="headerlink" title="给文字上色"></a>给文字上色</h3><pre><code>先用Markdown编辑完成导出为html，在需要上色的部分手动添加标签&lt;font color=&#39;#ff0000&#39;&gt;&lt;/font&gt;保存即可。</code></pre><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.jianshu.com/p/335db5716248">最完整的Markdown基础教程</a><br><a href="https://www.jianshu.com/c/65c0f5f216cc">Markdown 语法快速上手</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>tagTest1</title>
+      <link href="/2020/08/12/tagTest1/"/>
+      <url>/2020/08/12/tagTest1/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>用hexo搭建博客笔记</title>
+      <link href="/2020/08/12/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%AC%94%E8%AE%B0/"/>
+      <url>/2020/08/12/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><ol><li>nodejs</li><li>git</li><li>淘宝镜像源</li><li>hexo 安装</li></ol><h2 id="hexo-使用"><a href="#hexo-使用" class="headerlink" title="hexo 使用"></a>hexo 使用</h2><p>hexo s</p><p>hexo new “filename”</p><p>hexo init</p><p>hexo clean</p><p>hexo generate</p><p>配置git 仓库</p><p>hexo d</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MyFirstBlog</title>
+      <link href="/2020/08/12/MyFirstBlog/"/>
+      <url>/2020/08/12/MyFirstBlog/</url>
+      
+        <content type="html"><![CDATA[<h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p> 开始你的表演</p><hr><h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>你的表演满分</p><hr><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.woyaobaofu.com/">www.woyaobaofu.com</a></p><hr>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2020/08/12/hello-world/"/>
+      <url>/2020/08/12/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
