@@ -226,7 +226,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-08-12 16:21:41 / Modified: 20:35:54" itemprop="dateCreated datePublished" datetime="2020-08-12T16:21:41+08:00">2020-08-12</time>
+              <time title="Created: 2020-08-12 16:21:41 / Modified: 20:59:15" itemprop="dateCreated datePublished" datetime="2020-08-12T16:21:41+08:00">2020-08-12</time>
             </span>
 
           
@@ -633,15 +633,91 @@ void quickSort3Ways(T arr[], int n)&amp;#123;
 </ul>
 <h2 id="堆的基本存储"><a href="#堆的基本存储" class="headerlink" title="堆的基本存储"></a>堆的基本存储</h2><pre><code>* 用数组存储二叉堆
 * 数组的索引次序 对应 二叉堆中 层序遍历次序
-* 对于满二叉树
-    * parent(i)
-    * </code></pre>
-<h3 id="heapfy过程（堆的建立）"><a href="#heapfy过程（堆的建立）" class="headerlink" title="heapfy过程（堆的建立）"></a>heapfy过程（堆的建立）</h3><pre><code>将n个元素逐个插入空堆中，算法复杂度为O(n log n),而heapfy过程算法复杂度O(n)</code></pre>
-<h2 id="ShiftUp"><a href="#ShiftUp" class="headerlink" title="ShiftUp"></a>ShiftUp</h2><h2 id="ShiftDown"><a href="#ShiftDown" class="headerlink" title="ShiftDown"></a>ShiftDown</h2><h2 id="堆排序及其优化"><a href="#堆排序及其优化" class="headerlink" title="堆排序及其优化"></a>堆排序及其优化</h2><pre><code>* 堆排序算法：
+* 对于完全二叉树,对第i个元素，其与其父，其子的关系（第一个元素根的索引为0）
+    * parent(i) = （i-1）/2
+    * left child (i) = 2*i +1
+    * right child (i) = 2*i + 2</code></pre>
+<h3 id="heapfy过程（堆的建立）"><a href="#heapfy过程（堆的建立）" class="headerlink" title="heapfy过程（堆的建立）"></a>heapfy过程（堆的建立）</h3><pre><code>将n个元素逐个插入空堆中，算法复杂度为O(n log n),而heapfy过程算法复杂度O(n)  
+- 代码
+```
+    // 构造函数, 通过一个给定数组创建一个最大堆
+    // 该构造堆的过程, 时间复杂度为O(n)
+    MaxHeap(Item arr[], int n)&amp;#123;
+        data = new Item[n+1];
+        capacity = n;
+
+        for( int i = 0 ; i &lt; n ; i ++ )
+            data[i+1] = arr[i];
+        count = n;
+
+        for( int i = count/2 ; i &gt;= 1 ; i -- )
+            shiftDown(i);
+    &amp;#125;
+```</code></pre>
+<h2 id="ShiftUp"><a href="#ShiftUp" class="headerlink" title="ShiftUp"></a>ShiftUp</h2><pre><code>- 代码
+    ```
+        void shiftUp(int k)&amp;#123;
+        while( k &gt; 1 &amp;&amp; data[k/2] &lt; data[k] )&amp;#123;
+            swap( data[k/2], data[k] );
+            k /= 2;
+        &amp;#125;
+        &amp;#125;
+    ``` </code></pre>
+<h2 id="ShiftDown"><a href="#ShiftDown" class="headerlink" title="ShiftDown"></a>ShiftDown</h2><pre><code>- 代码
+```
+    void shiftDown(int k)&#123;
+    while( 2*k &lt;= count )&#123;
+        int j = 2*k; // 在此轮循环中,data[k]和data[j]交换位置
+        if( j+1 &lt;= count &amp;&amp; data[j+1] &gt; data[j] )
+            j ++;
+        // data[j] 是 data[2*k]和data[2*k+1]中的最大值
+
+        if( data[k] &gt;= data[j] ) break;
+        swap( data[k] , data[j] );
+        k = j;
+    &#125;
+    &#125;
+```</code></pre>
+<h2 id="堆排序及其优化"><a href="#堆排序及其优化" class="headerlink" title="堆排序及其优化"></a>堆排序及其优化</h2><pre><code>* 堆排序算法：
     * 创建堆  
     * 堆顶出堆： 将堆顶与堆尾互换，堆的size-1,并将新的堆顶（原堆尾）shiftDown()
-    * 重复第二步 </code></pre>
-<h2 id="索引堆"><a href="#索引堆" class="headerlink" title="索引堆"></a>索引堆</h2><h2 id="涉及堆-的相关问题"><a href="#涉及堆-的相关问题" class="headerlink" title="涉及堆 的相关问题"></a>涉及堆 的相关问题</h2><h2 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h2><pre><code>基本思想： 分配 + 收集 （先排序低位再排序高位）</code></pre>
+    * 重复第二步  
+* 堆排序的代码
+    ```
+            // heapSort1, 将所有的元素依次添加到堆中, 在将所有元素从堆中依次取出来, 即完成了排序
+            // 无论是创建堆的过程, 还是从堆中依次取出元素的过程, 时间复杂度均为O(nlogn)
+            // 整个堆排序的整体时间复杂度为O(nlogn)
+            template&lt;typename T&gt;
+            void heapSort1(T arr[], int n)&#123;
+
+                MaxHeap&lt;T&gt; maxheap = MaxHeap&lt;T&gt;(n);
+                for( int i = 0 ; i &lt; n ; i ++ )
+                    maxheap.insert(arr[i]);
+
+                for( int i = n-1 ; i &gt;= 0 ; i-- )
+                    arr[i] = maxheap.extractMax();
+
+            &#125;
+
+
+            // heapSort2, 借助我们的heapify过程创建堆
+            // 此时, 创建堆的过程时间复杂度为O(n), 将所有元素依次从堆中取出来, 实践复杂度为O(nlogn)
+            // 堆排序的总体时间复杂度依然是O(nlogn), 但是比上述heapSort1性能更优, 因为创建堆的性能更优
+    ```
+* 堆的实现细节
+    *ShiftUp和ShiftDown种使用复制操作替换swap操作*  </code></pre>
+<h2 id="索引堆"><a href="#索引堆" class="headerlink" title="索引堆"></a>索引堆</h2><ul>
+<li>基本思想： 交换索引（存储地址），而不交换实际的元素</li>
+<li>应用： 最小生成树Prim算法中，用来维护 每个节点对应的最小横切面的权重【同时能输出当前所有节点最小横切面中的最小横切面】<h2 id="涉及堆-的相关问题"><a href="#涉及堆-的相关问题" class="headerlink" title="涉及堆 的相关问题"></a>涉及堆 的相关问题</h2><ul>
+<li>多路归并排序 多个元素同时比较的时候用，最小（大）堆</li>
+<li>d叉堆 d-ary heap  </li>
+<li>最大最小队列 （最大堆和最小堆同时维护？？）</li>
+<li>二项堆</li>
+<li>斐波那契堆</li>
+</ul>
+</li>
+</ul>
+<h2 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h2><pre><code>基本思想： 分配 + 收集 （先排序低位再排序高位）</code></pre>
 <h2 id="排序总结"><a href="#排序总结" class="headerlink" title="排序总结"></a>排序总结</h2><table>
 <thead>
 <tr>
