@@ -2064,7 +2064,7 @@ Item extractMax()&#123;
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-08-13 20:11:03" itemprop="dateModified" datetime="2020-08-13T20:11:03+08:00">2020-08-13</time>
+                <time title="Modified: 2020-08-14 16:13:44" itemprop="dateModified" datetime="2020-08-14T16:13:44+08:00">2020-08-14</time>
               </span>
 
           
@@ -3315,8 +3315,258 @@ private int find(int p)&amp;#123;
 </li>
 </ul>
 <hr>
-<h1 id="第九章：最短路径"><a href="#第九章：最短路径" class="headerlink" title="第九章：最短路径"></a>第九章：最短路径</h1><h2 id="9-1-最短路径问题和松弛操作"><a href="#9-1-最短路径问题和松弛操作" class="headerlink" title="9-1 最短路径问题和松弛操作"></a>9-1 最短路径问题和松弛操作</h2><h2 id="9-2-Dijkstra算法的思想"><a href="#9-2-Dijkstra算法的思想" class="headerlink" title="9-2 Dijkstra算法的思想"></a>9-2 Dijkstra算法的思想</h2><h2 id="9-3-实现Dijkstra算法"><a href="#9-3-实现Dijkstra算法" class="headerlink" title="9-3 实现Dijkstra算法"></a>9-3 实现Dijkstra算法</h2><h2 id="9-4-负权边和Bellman-Ford算法"><a href="#9-4-负权边和Bellman-Ford算法" class="headerlink" title="9-4 负权边和Bellman-Ford算法"></a>9-4 负权边和Bellman-Ford算法</h2><h2 id="9-5-实现Bellman-Ford算法"><a href="#9-5-实现Bellman-Ford算法" class="headerlink" title="9-5 实现Bellman-Ford算法"></a>9-5 实现Bellman-Ford算法</h2><h2 id="9-6-更多和最短路径相关的思考"><a href="#9-6-更多和最短路径相关的思考" class="headerlink" title="9-6 更多和最短路径相关的思考"></a>9-6 更多和最短路径相关的思考</h2><hr>
-<h1 id="第十章：结束语"><a href="#第十章：结束语" class="headerlink" title="第十章：结束语"></a>第十章：结束语</h1>
+<h1 id="第九章：最短路径"><a href="#第九章：最短路径" class="headerlink" title="第九章：最短路径"></a>第九章：最短路径</h1><h2 id="9-1-最短路径问题和松弛操作"><a href="#9-1-最短路径问题和松弛操作" class="headerlink" title="9-1 最短路径问题和松弛操作"></a>9-1 最短路径问题和松弛操作</h2><ul>
+<li>最短路径的应用<ul>
+<li>路径规划</li>
+<li>工作任务计划</li>
+</ul>
+</li>
+<li>广度优先遍历 求 无权图 的最短路径<ul>
+<li>最短路径树 （单源最短路径：一点到所有其他点的最短路径）</li>
+</ul>
+</li>
+<li>松弛操作(Relaxation)<ul>
+<li>考虑经过该节点的 是否有到达其他节点的更短的路径<h2 id="9-2-Dijkstra算法的思想"><a href="#9-2-Dijkstra算法的思想" class="headerlink" title="9-2 Dijkstra算法的思想"></a>9-2 Dijkstra算法的思想</h2></li>
+</ul>
+</li>
+<li>适用条件<ul>
+<li>图中不能有<strong>负权边</strong></li>
+<li>复杂度O(E log V)</li>
+</ul>
+</li>
+<li>实现<ul>
+<li>数据结构：<ul>
+<li>索引堆： 维护每个节点当前被到达的最短路径， 以及 所有最短路径中的最短路径<ul>
+<li>辅助：访问标记数组： 存当前节点是否进行了松弛操作</li>
+</ul>
+</li>
+<li>回溯数组: 存到达该节点的最短路径中的上一个节点</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>算法流程<ul>
+<li>初始化数据结构：<ul>
+<li>索引堆<code>IndexMinHeap(imh)</code> imh[w] 表示第w个节点当前最短路径的权值</li>
+<li>访问数组 <code>boolean[] marked</code>， marked[i] 表示第 i 个节点<strong>是否</strong>进行过松弛操作，初始都为false</li>
+<li>回溯数组<code>int[] from</code>, from[i] 表示目的点为第i个节点的上一个节点，初始均赋值为-1</li>
+</ul>
+</li>
+<li>初始化：将 源节点 $s$ 到自身的路径的权重 加入索引堆</li>
+<li>循环（直至索引堆为空）<ul>
+<li>当前距离源节点$s$ 最近的节点  $v$ ， 出堆<ul>
+<li>如果 $v$ 没有进行过松弛操作（marked[v]==false）, 则对其进行 <strong>松弛操作</strong>：<ul>
+<li>对 $v$ 所有邻节点 $w$ :<ul>
+<li>如果 $w$ 没有进行过松弛操作（$marked[v]==false$）<ul>
+<li>$s$ 经过 $v$ 到达 $w$ 的最短路径为：$dis = dis(s,v) + dis(v,w)$</li>
+<li><code>if from[w]==-1||ids&lt;imh[w]</code> <ul>
+<li><code>imh[w] = dis</code></li>
+<li><code>from[w] = v</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>marked[v] = true</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>实现代码：<ul>
+<li>初始化及核心代码<pre><code class="java">//初始化  
+marked = new boolean[graph.V()];
+from = new int[graph.V()];
+for(int i=0;i&lt;graph.V();i++) &amp;#123;
+    from[i] = -1;
+    marked[i] = false;
+&amp;#125;
+//Dijkstra
+IndexMinHeap&lt;Weight&gt; imh = new IndexMinHeap&lt;&gt;(graph.V());
+imh.insert(s, (Weight)(Number)(0.0));
+while(!imh.isEmpty()) &amp;#123;
+    int v = imh.extractMinIndex();
+    if(!marked[v]) 
+        Relaxation(v,imh); //Relaxation松弛操作
+&amp;#125;
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>  - 松弛操作
+```java
+        //松弛操作
+        void Relaxation(int v, IndexMinHeap imh) &amp;#123;
+        marked[v] = true;
+        //遍历邻边
+        for(Edge&lt;Weight&gt; e : (List&lt;Edge&gt;)graph.adj(v)) &amp;#123;
+            int w = e.getOther(v);
+            if(!marked[w])
+            &amp;#123;
+                Double dis = e.getW().doubleValue()+(((Number) imh.getItem(v)).doubleValue());
+                if(from[w] == -1||imh.getItem(w).compareTo(dis)&gt;0) &amp;#123;
+                    if(!imh.contain(w))
+                        imh.insert(w,dis);
+                    else 
+                        imh.change(w, dis);
+                    from[w] = v;
+                &amp;#125;
+
+            &amp;#125;
+        &amp;#125;</code></pre>
+<h2 id="9-3-负权边和Bellman-Ford算法"><a href="#9-3-负权边和Bellman-Ford算法" class="headerlink" title="9-3 负权边和Bellman-Ford算法"></a>9-3 负权边和Bellman-Ford算法</h2><ul>
+<li><p>负权边带来的问题</p>
+<ul>
+<li>每次选择的并不是</li>
+<li>负权环</li>
+</ul>
+</li>
+<li><p>Bellman-Ford 单源最短路径算法</p>
+<ul>
+<li>前提： 图中不能有<strong>负权环</strong></li>
+<li>Bellman-Ford 可以判断图中是否有负权环<ul>
+<li>如果一个图没有负权环，则：<ul>
+<li>从一个顶点到另一个顶点的最短路径，最多经过所有($V$)的顶点，即有$V-1$条边</li>
+</ul>
+</li>
+<li>否则， 存在 顶点 经过了两次， 即 存在<strong>负</strong>权环</li>
+</ul>
+</li>
+<li>复杂度 $O(EV)$</li>
+</ul>
+</li>
+<li><p>Bellman-Ford 基本思想</p>
+<ul>
+<li>对所有点进行 $v-1$ 次 松弛操作，如果还可以继续松弛，则存在负权环</li>
+<li>对所有点(V)进行松弛操作， 遍历所有的边(E),复杂度为O(VE)??</li>
+</ul>
+</li>
+<li><p>算法流程</p>
+<ul>
+<li>Initial: from[s] = s; distTo[s] = 0;//初始化源节点 信息 </li>
+<li>for pass = 1:G.V()-1 : //遍历 G.V()-1 遍<ul>
+<li>for(int v=0; v &lt; G.V();v++) : //每一遍对每个节点进行一次松弛操作<ul>
+<li>Relaxation(v)：<ul>
+<li>如果$v$可达，遍历 $v$ 的所有邻接点 $wi$：<ul>
+<li>$dis = dis(s,v) + dis(v,wi)$</li>
+<li>if from[w]==-1||dis &lt; dis(s,w) :<ul>
+<li>dis(s,w) = dis;</li>
+<li>from[w] = v;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>//对每个节点再进行一次松弛操作，如果路径还能再减，则存在<strong>负权环</strong></li>
+</ul>
+</li>
+<li><p>实现代码</p>
+<pre><code class="java">      // Bellman-Ford的过程
+      // 进行V-1次循环, 每一次循环求出从起点到其余所有点, 最多使用pass步可到达的最短距离
+      for( int pass = 1 ; pass &lt; G.V() ; pass ++ )&amp;#123;
+
+          // 每次循环中对所有的边进行一遍松弛操作
+          // 遍历所有边的方式是先遍历所有的顶点, 然后遍历和所有顶点相邻的所有边
+          for( int i = 0 ; i &lt; G.V() ; i ++ )&amp;#123;
+              // 使用我们实现的邻边迭代器遍历和所有顶点相邻的所有边
+              for( Object item : G.adj(i) )&amp;#123;
+                  Edge&lt;Weight&gt; e = (Edge&lt;Weight&gt;)item;
+                  // 对于每一个边首先判断e-&gt;v()可达
+                  // 之后看如果e-&gt;w()以前没有到达过， 显然我们可以更新distTo[e-&gt;w()]
+                  // 或者e-&gt;w()以前虽然到达过, 但是通过这个e我们可以获得一个更短的距离, 即可以进行一次松弛操作, 我们也可以更新distTo[e-&gt;w()]
+                  if( from[e.v()] != null &amp;&amp; (from[e.w()] == null || distTo[e.v()].doubleValue() + e.wt().doubleValue() &lt; distTo[e.w()].doubleValue()) )&amp;#123;
+                      distTo[e.w()] = distTo[e.v()].doubleValue() + e.wt().doubleValue();
+                      from[e.w()] = e;
+                  &amp;#125;
+              &amp;#125;
+          &amp;#125;
+      &amp;#125;</code></pre>
+</li>
+<li><p>检测是否有负权环</p>
+<pre><code class="java"> // 判断图中是否有负权环
+  boolean detectNegativeCycle()&amp;#123;
+
+      for( int i = 0 ; i &lt; G.V() ; i ++ )&amp;#123;
+          for( Object item : G.adj(i) )&amp;#123;
+              Edge&lt;Weight&gt; e = (Edge&lt;Weight&gt;)item;
+              if( from[e.v()] != null &amp;&amp; distTo[e.v()].doubleValue() + e.wt().doubleValue() &lt; distTo[e.w()].doubleValue() )
+                  return true;
+          &amp;#125;
+      &amp;#125;
+
+      return false;
+  &amp;#125;
+</code></pre>
+</li>
+</ul>
+<pre><code>- queue-based Bellman-Ford
+  - 对Bellman-Ford的优化
+
+- 其他
+  - 处理负权边通常是针对 **有向图**， 因为无向图的负权边 本身就是一个**负权环**
+
+##    9-4 更多和最短路径相关的思考  
+- 单源最短路径算法总结
+
+算法|边的权重|图的有向性|复杂度  
+:---|:---|:---|:---
+dijkstra|无负权边|有向，无向图均可|$O(ElogV)$
+Bellman-Ford|无负权环|有向图,或无负权边的无向图|$O(ElogV)$
+利用拓扑排序|有向无环图（DAG）|有向图|$O(V+E)$
+- 所有对最短路径算法
+  - Floyed算法， 处理无负权环的图，复杂度$O(V^3)$
+- 最长路径算法
+  - 不能有正权环
+  - 无权图的最长路径问题是指数难度的
+  - 对于有权图，不能使用Dijkstra求最长路径问题
+  - 可以使用Bellman-Ford (把所有路径都取负)
+
+---  
+# 第十章：结束语
+线性问题 &gt;&gt; 树形问题 &gt;&gt; 图形问题
+
+- 线性问题
+  - 排序问题
+    - $O(n^2)$ 选择排序 插入排序
+    - $O(nlog(n))$ 归并排序 快速排序 
+
+- 更多的算法问题
+  - 数据结构相关
+    - 双向队列
+    - 斐波那契堆
+    - 红黑树
+    - 区间树
+    - KD树
+    - ...
+  - 具体领域相关
+    - 数学： 数论 计算几何
+    - 图论： 网络流
+- 算法设计相关
+  - 分治算法
+    - 归并排序，快速算法， 树结构
+  - 贪心
+    - 选择排序； 堆 ； Kruskal ; Prim; Dijkstra ;...
+  - 递归回溯
+    - 树的遍历
+    - 图的遍历
+  - 动态规划
+    - 思想： **最优子结构**
+    - Prim ; Dijkstra 
+- 大家加油！！
+
+
+</code></pre>
+
       
     </div>
 
