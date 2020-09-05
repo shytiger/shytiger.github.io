@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
+  </script>
+
+  <meta name="description" content="引言 优质博客 java集合继承关系图集合概述   java集合框架图  Collection集合中存储的都是对象的引用(地址)。    集合的输出 四种输出方式 Iterator ListIterator Enumeration foreach   注意： 在迭代时，不可以通过集合对象的方法操作集合中的元素，因为会发生ConcurrentModificationException异常。所以，在迭">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java集合">
+<meta property="og:url" content="http://yoursite.com/2020/09/05/Java%E9%9B%86%E5%90%88/index.html">
+<meta property="og:site_name" content="shytiger Blog">
+<meta property="og:description" content="引言 优质博客 java集合继承关系图集合概述   java集合框架图  Collection集合中存储的都是对象的引用(地址)。    集合的输出 四种输出方式 Iterator ListIterator Enumeration foreach   注意： 在迭代时，不可以通过集合对象的方法操作集合中的元素，因为会发生ConcurrentModificationException异常。所以，在迭">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2014/01/2243690-9cd9c896e0d512ed.gif">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200905155442847.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwODkyNTEx,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200905162053918.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200905162201254.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200905162910374.png#pic_center">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/1010726/201706/1010726-20170621005616085-269540653.png">
+<meta property="article:published_time" content="2020-09-05T01:18:44.000Z">
+<meta property="article:modified_time" content="2020-09-05T08:50:51.632Z">
+<meta property="article:author" content="yan">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.runoob.com/wp-content/uploads/2014/01/2243690-9cd9c896e0d512ed.gif">
+
+
+<link rel="canonical" href="http://yoursite.com/2020/09/05/Java%E9%9B%86%E5%90%88/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Java集合 | shytiger Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="shytiger Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">shytiger Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">集合概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Collection"><span class="nav-number">3.</span> <span class="nav-text">Collection</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#List%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.1.</span> <span class="nav-text">List接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList%E7%B1%BB"><span class="nav-number">3.1.1.</span> <span class="nav-text">ArrayList类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedList%E7%B1%BB"><span class="nav-number">3.1.2.</span> <span class="nav-text">LinkedList类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vector%E7%B1%BB"><span class="nav-number">3.1.3.</span> <span class="nav-text">Vector类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Queue%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.2.</span> <span class="nav-text">Queue接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PriorityQueue%E7%B1%BB"><span class="nav-number">3.2.1.</span> <span class="nav-text">PriorityQueue类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dequeue%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.3.</span> <span class="nav-text">Dequeue接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayDeque%E7%B1%BB"><span class="nav-number">3.3.1.</span> <span class="nav-text">ArrayDeque类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.4.</span> <span class="nav-text">Set接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet%E7%B1%BB"><span class="nav-number">3.4.1.</span> <span class="nav-text">HashSet类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedHashSet%E7%B1%BB"><span class="nav-number">3.4.2.</span> <span class="nav-text">LinkedHashSet类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SortedSet%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.4.3.</span> <span class="nav-text">SortedSet接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TreeSet%E7%B1%BB"><span class="nav-number">3.4.3.1.</span> <span class="nav-text">TreeSet类</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Map%E6%8E%A5%E5%8F%A3"><span class="nav-number">4.</span> <span class="nav-text">Map接口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HashTable-%E7%B1%BB"><span class="nav-number">4.1.</span> <span class="nav-text">HashTable 类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-%E7%B1%BB"><span class="nav-number">4.2.</span> <span class="nav-text">HashMap  类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedHashMap-%E7%B1%BB"><span class="nav-number">4.2.1.</span> <span class="nav-text">LinkedHashMap 类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SortedMap-%E6%8E%A5%E5%8F%A3"><span class="nav-number">4.3.</span> <span class="nav-text">SortedMap 接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TreeMap%E7%B1%BB"><span class="nav-number">4.3.1.</span> <span class="nav-text">TreeMap类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96-%E8%8D%89%E7%A8%BF"><span class="nav-number">5.</span> <span class="nav-text">其他(草稿)</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">yan</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/05/Java%E9%9B%86%E5%90%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shytiger Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java集合
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-09-05 09:18:44 / Modified: 16:50:51" itemprop="dateCreated datePublished" datetime="2020-09-05T09:18:44+08:00">2020-09-05</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><ul>
+<li>优质博客<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jing99/p/7057245.html">java集合继承关系图</a><h1 id="集合概述"><a href="#集合概述" class="headerlink" title="集合概述"></a>集合概述</h1></li>
+</ul>
+</li>
+<li>java集合框架图<br><img src="https://www.runoob.com/wp-content/uploads/2014/01/2243690-9cd9c896e0d512ed.gif"><br><img src="https://img-blog.csdnimg.cn/20200905155442847.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwODkyNTEx,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></li>
+</ul>
+<h1 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h1><p><img src="https://img-blog.csdnimg.cn/20200905162053918.png#pic_center" alt="在这里插入图片描述"><br><strong>集合中存储的都是对象的引用(地址)。</strong>  </p>
+<ul>
+<li>集合的输出<ul>
+<li>四种输出方式<ul>
+<li>Iterator</li>
+<li>ListIterator</li>
+<li>Enumeration</li>
+<li>foreach</li>
+</ul>
+</li>
+<li>注意：<ul>
+<li><em>在迭代时，不可以通过集合对象的方法操作集合中的元素，因为会发生ConcurrentModificationException异常。所以，在迭代器时，只能用迭代器的放过操作元素，可是Iterator方法是有限的，只能对元素进行判断，取出，删除的操作，如果想要其他的操作如添加，修改等，就需要使用其子接口，ListIterator。该接口只能通过List集合的listIterator方法获取。</em><h2 id="List接口"><a href="#List接口" class="headerlink" title="List接口"></a>List接口</h2>(对付顺序的好帮手)： 存储的元素是有序的、可重复的。<br><img src="https://img-blog.csdnimg.cn/20200905162201254.png#pic_center" alt="在这里插入图片描述"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="ArrayList类"><a href="#ArrayList类" class="headerlink" title="ArrayList类"></a>ArrayList类</h3><ul>
+<li>Object[] 数组</li>
+<li>查询快</li>
+<li>add(E e) O(1)</li>
+<li>add(int index, E element)  O(n-i)<h3 id="LinkedList类"><a href="#LinkedList类" class="headerlink" title="LinkedList类"></a>LinkedList类</h3></li>
+<li>双向链表实现</li>
+<li>查询慢</li>
+<li>add(E e)  O(1)</li>
+<li>add(int index, E element) o(n)<h3 id="Vector类"><a href="#Vector类" class="headerlink" title="Vector类"></a>Vector类</h3></li>
+<li>线程安全的，效率低<h2 id="Queue接口"><a href="#Queue接口" class="headerlink" title="Queue接口"></a>Queue接口</h2><h3 id="PriorityQueue类"><a href="#PriorityQueue类" class="headerlink" title="PriorityQueue类"></a>PriorityQueue类</h3><h2 id="Dequeue接口"><a href="#Dequeue接口" class="headerlink" title="Dequeue接口"></a>Dequeue接口</h2><h3 id="ArrayDeque类"><a href="#ArrayDeque类" class="headerlink" title="ArrayDeque类"></a>ArrayDeque类</h3><h2 id="Set接口"><a href="#Set接口" class="headerlink" title="Set接口"></a>Set接口</h2><h3 id="HashSet类"><a href="#HashSet类" class="headerlink" title="HashSet类"></a>HashSet类</h3></li>
+<li>HashSet是如何保证元素唯一性的呢？<blockquote>
+<p>是通过元素的两个方法，hashCode和equals来完成。<br>  如果元素的HashCode值相同，才会判断equals是否为true。<br>  如果元素的hashcode值不同，不会调用equals。　　　</p>
+</blockquote>
+<h3 id="LinkedHashSet类"><a href="#LinkedHashSet类" class="headerlink" title="LinkedHashSet类"></a>LinkedHashSet类</h3></li>
+<li>能够按照添加的顺序遍历<h3 id="SortedSet接口"><a href="#SortedSet接口" class="headerlink" title="SortedSet接口"></a>SortedSet接口</h3><h4 id="TreeSet类"><a href="#TreeSet类" class="headerlink" title="TreeSet类"></a>TreeSet类</h4></li>
+<li>底层为红黑树</li>
+<li>能够按照添加元素的顺序进行遍历，排序的方式有自然排序和定制排序。</li>
+</ul>
+<h1 id="Map接口"><a href="#Map接口" class="headerlink" title="Map接口"></a>Map接口</h1><p>&lt;Key,Value&gt;<br><img src="https://img-blog.csdnimg.cn/20200905162910374.png#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="HashTable-类"><a href="#HashTable-类" class="headerlink" title="HashTable 类"></a>HashTable 类</h2><ul>
+<li>线程安全 其内部方法基本经过<code>synchronized</code>修饰 （替代 ConcurrentHashMap）</li>
+<li>效率较低，基本被淘汰<h2 id="HashMap-类"><a href="#HashMap-类" class="headerlink" title="HashMap  类"></a>HashMap  类</h2></li>
+<li>底层数据结构： 数组 + 链表（jdk1.8后 链表长于（8）将链表转为红黑树）</li>
+<li>初始容量大小和每次扩充容量大小：<ul>
+<li>HashMap 默认的初始化大小为 16。之后每次扩充，容量变为原来的 2 倍。</li>
+<li>创建时如果给定了容量初始值，那么 Hashtable 会直接使用你给定的大小，而 HashMap 会将其扩充为 2 的幂次方大小（HashMap 中的tableSizeFor()方法保证，下面给出了源代码）。也就是说 HashMap 总是使用 2 的幂作为哈希表的大小。<h3 id="LinkedHashMap-类"><a href="#LinkedHashMap-类" class="headerlink" title="LinkedHashMap 类"></a>LinkedHashMap 类</h3></li>
+<li>在上<code>HashMap</code>结构的基础上，增加了一条双向链表，使得上面的结构可以保持键值对的<strong>插入顺序</strong>。<h2 id="SortedMap-接口"><a href="#SortedMap-接口" class="headerlink" title="SortedMap 接口"></a>SortedMap 接口</h2><h3 id="TreeMap类"><a href="#TreeMap类" class="headerlink" title="TreeMap类"></a>TreeMap类</h3></li>
+</ul>
+</li>
+<li>底层数据结构：红黑树</li>
+</ul>
+<h1 id="其他-草稿"><a href="#其他-草稿" class="headerlink" title="其他(草稿)"></a>其他(草稿)</h1><ul>
+<li>List接口<ul>
+<li>ArrayList <ul>
+<li>Object[] 数组</li>
+<li>查询快</li>
+<li>add(E e) O(1)</li>
+<li>add(int index, E element)  O(n-i)</li>
+</ul>
+</li>
+<li>LinkedList <ul>
+<li>双向链表实现</li>
+<li>查询慢</li>
+<li>add(E e)  O(1)</li>
+<li>add(int index, E element) o(n)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Map接口<ul>
+<li>HashMap<ul>
+<li>数组 + 链表（jdk1.8后 链表长于（8）将链表转为红黑树）</li>
+</ul>
+</li>
+<li>LinkedHashMap  <ul>
+<li>在上面结构的基础上，增加了一条双向链表，使得上面的结构可以保持键值对的<strong>插入顺序</strong>。</li>
+</ul>
+</li>
+<li>TreeMap</li>
+<li>LinkedTable</li>
+<li>ConcurrentHashMap<ul>
+<li>只锁桶</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Set<ul>
+<li>HashSet<ul>
+<li>线程不安全 底层是HashMap 可以存储null值</li>
+</ul>
+</li>
+<li>LinkedHashSet</li>
+<li>TreeSet  </li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Collection接口<br><img src="https://images2015.cnblogs.com/blog/1010726/201706/1010726-20170621005616085-269540653.png">  </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Modifier and Typ</th>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>boolean</td>
+<td>add(E e)</td>
+<td>确保此集合包含指定的元素（可选操作）。</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>addAll​(Collection&lt;? extends E&gt; c)</td>
+<td>将指定集合中的所有元素添加到此集合（可选操作）。</td>
+</tr>
+<tr>
+<td>void</td>
+<td>clear​()</td>
+<td>从此集合中删除所有元素（可选操作）。</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>contains​(Object o)</td>
+<td>如果此集合包含指定的元素，则返回 true 。</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>containsAll​(Collection&lt;?&gt; c)</td>
+<td>如果此集合包含指定集合中的所有元素，则返回 true 。</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>equals​(Object o)</td>
+<td>将指定的对象与此集合进行比较以获得相等性。</td>
+</tr>
+<tr>
+<td>int</td>
+<td>hashCode​()</td>
+<td>返回此集合的哈希码值。</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>isEmpty​()</td>
+<td>如果此集合不包含元素，则返回 true 。</td>
+</tr>
+<tr>
+<td>Iterator<E></td>
+<td>iterator​()</td>
+<td>返回此集合中元素的迭代器。</td>
+</tr>
+<tr>
+<td>default Stream<E></td>
+<td>parallelStream​()</td>
+<td>返回可能并行的 Stream与此集合作为其来源。</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>remove​(Object o)</td>
+<td>从该集合中删除指定元素的单个实例（如果存在）（可选操作）。</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>removeAll​(Collection&lt;?&gt; c)</td>
+<td>删除指定集合中包含的所有此集合的元素（可选操作）。</td>
+</tr>
+<tr>
+<td>default</td>
+<td>boolean removeIf​(Predicate&lt;? super E&gt; filter)</td>
+<td>删除满足给定谓词的此集合的所有元素。</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>retainAll​(Collection&lt;?&gt; c)</td>
+<td>仅保留此集合中包含在指定集合中的元素（可选操作）。</td>
+</tr>
+<tr>
+<td>int</td>
+<td>size​()</td>
+<td>返回此集合中的元素数。</td>
+</tr>
+<tr>
+<td>default</td>
+<td>Spliterator<E> spliterator​()</td>
+<td>在此集合中的元素上创建一个Spliterator 。</td>
+</tr>
+<tr>
+<td>default</td>
+<td>Stream<E> stream​()</td>
+<td>返回一个序列 Stream与此集合作为其来源。</td>
+</tr>
+<tr>
+<td>Object[]</td>
+<td>toArray​()</td>
+<td>返回一个包含此集合中所有元素的数组。</td>
+</tr>
+<tr>
+<td><T> T[]</td>
+<td>toArray​(T[] a)</td>
+<td>返回一个包含此集合中所有元素的数组; 返回的数组的运行时类型是指定数组的运行时类型。</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/08/12/%E6%85%95%E8%AF%BE%E7%BD%91-%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" rel="prev" title="慕课网-算法与数据结构—学习总结">
+                  <i class="fa fa-chevron-left"></i> 慕课网-算法与数据结构—学习总结
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yan</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+      
+
+
+
+
+
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
