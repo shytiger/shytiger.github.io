@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
+  </script>
+
+  <meta name="description" content="菜鸟教程(runoob.com)        查看章节 4   章节 1 引言      章节 2 文本标签       这个文本是加粗的          这个文本是加粗的          这个文本字体放大          这个文本是斜体的          这个文本是斜体的          这个文本是缩小的          这个文本包含下标          这个文本包含上标">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shytiger Blog">
+<meta property="og:url" content="http://yoursite.com/2020/09/16/HTMLDemo/index.html">
+<meta property="og:site_name" content="shytiger Blog">
+<meta property="og:description" content="菜鸟教程(runoob.com)        查看章节 4   章节 1 引言      章节 2 文本标签       这个文本是加粗的          这个文本是加粗的          这个文本字体放大          这个文本是斜体的          这个文本是斜体的          这个文本是缩小的          这个文本包含下标          这个文本包含上标">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-16T01:45:04.531Z">
+<meta property="article:modified_time" content="2020-09-16T17:15:01.410Z">
+<meta property="article:author" content="yan">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://yoursite.com/2020/09/16/HTMLDemo/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title> | shytiger Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="shytiger Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">shytiger Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">章节 1 引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">章节 2 文本标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">章节 3 图片标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">章节 4 链接标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">章节 5 列表标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">章节 6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text">章节 7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">8.</span> <span class="nav-text">章节 8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">9.</span> <span class="nav-text">章节 9</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">10.</span> <span class="nav-text">章节 10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">11.</span> <span class="nav-text">章节 11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">12.</span> <span class="nav-text">章节 12</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">13.</span> <span class="nav-text">章节 13</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">14.</span> <span class="nav-text">章节 14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">15.</span> <span class="nav-text">章节 15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">16.</span> <span class="nav-text">章节 16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">17.</span> <span class="nav-text">章节 17</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">yan</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/16/HTMLDemo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shytiger Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-09-16 09:45:04" itemprop="dateCreated datePublished" datetime="2020-09-16T09:45:04+08:00">2020-09-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-17 01:15:01" itemprop="dateModified" datetime="2020-09-17T01:15:01+08:00">2020-09-17</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+</head>
+<body>
+ 
+
+<!--链接-->
+
+<a href="#C4">查看章节 4</a>
+</p>
+
+<h2>章节 1 引言</h2>
+<p>  
+</p>
+
+<h2>章节 2 文本标签</h2>
+<!-- 文本格式化 -->
+<p>
+    <b>这个文本是加粗的</b>
+    <br />
+    <strong>这个文本是加粗的</strong>
+    <br />
+    <big>这个文本字体放大</big>
+    <br />
+    <em>这个文本是斜体的</em>
+    <br />
+    <i>这个文本是斜体的</i>
+    <br />
+    <small>这个文本是缩小的</small>
+    <br />
+    这个文本包含<sub>下标</sub>
+    <br />
+    这个文本包含<sup>上标</sup>
+</p>
+
+<!-- 预格式文本 -->
+<p>
+    <pre>
+        此例演示如何使用 pre 标签
+        对空行和    空格
+        进行控制
+    
+        上为空行
+    </pre>
+</p>
+
+<!--计算机输出标签显示效果-->
+<p>
+    <code>计算机输出</code>
+    <br />
+    <kbd>键盘输入</kbd>
+    <br />
+    <tt>打字机文本</tt>
+    <br />
+    <samp>计算机代码样本</samp>
+    <br />
+    <var>计算机变量</var>
+    <br />
+
+    <p>
+    <b>注释：</b>这些标签常用于显示计算机/编程代码。
+    </p>
+</p>
+
+<!--地址-->
+<p>
+    <address>
+        Written by <a href="mailto:webmaster@example.com">Jon Doe</a>.<br> 
+        Visit us at:<br>
+        Example.com<br>
+        Box 564, Disneyland<br>
+        USA
+    </address>
+</p>
+<!--缩略词标签 鼠标放置相应位置显示更多-->
+<p>
+    <abbr title="etcetera">etc.</abbr>
+    <br />
+    <acronym title="World Wide Web">WWW</acronym>
+    <p>
+        abbr：表示全词的缩写；
+        acronym：表示标记一个首字母缩写；
+    </p>
+    <p>在某些浏览器中，当您把鼠标移至缩略词语上时，title 可用于展示表达的完整版本。</p>
+
+    <p>仅对于 IE 5 中的 acronym 元素有效。</p>
+
+    <p>对于 Netscape 6.2 中的 abbr 和 acronym 元素都有效。</p>
+</p>
+
+<!--文字方向-->
+<p>
+    <p>该段落文字从左到右显示。</p>  
+    <p><bdo dir="rtl">该段落文字从右到左显示。</bdo></p>  
+</p>
+
+<!--块引用-->
+<p>WWF's goal is to: 
+<q>Build a future where people live in harmony with nature.</q>
+We hope they succeed.</p>
+
+<!--删除字效果-->
+<p>My favorite color is <del>blue</del> <ins>red</ins>!</p>
+
+<!--文本格式小结-->
+<p>
+<pre>
+    &lt; &gt;
+    b---bold
+    em---emphasize
+    i--italic
+    sub---subscript
+    sup---superscript
+    ins---insert
+    del---delete
+    kbd---keyboard
+    bdo---Bi-Directional Override
+    q---quate
+    dfn---define
+</pre>
+</p>
+
+<h2>章节 3 图片标签</h2>
+<p>这边显示该章节的内容……</p>
+
+<h2><a id="C4">章节 4 链接标签</a></h2>
+<p>这边显示该章节的内容……</p>
+
+
+
+<h2>章节 5 列表标签</h2>
+<p>
+    早上起床
+    <ol type="I" start = "5">
+        <li>睁眼</li>
+        <li>摸手机</li>
+        <li>解锁</li>
+        <li>刷手机</li>
+        <li>起床</li>
+    </ol>
+    <!--type: disc square circle-->
+    早上起床
+    <ul type="square">
+        <li>睁眼</li>
+        <li>摸手机</li>
+        <li>解锁</li>
+        <li>刷手机</li>
+        <li>起床</li>
+    </ul>
+
+
+</p>
+
+<h2>章节 6</h2>
+<p>这边显示该章节的内容……</p>
+
+<h2>章节 7</h2>
+<p>这边显示该章节的内容……</p>
+
+<h2>章节 8</h2>
+<p>这边显示该章节的内容……</p>
+
+<h2>章节 9</h2>
+<p>这边显示该章节的内容……</p>
+
+<h2>章节 10</h2>
+<p>这边显示该章节的内容……</p>
+
+<h2>章节 11</h2>
+<p>这边显示该章节的内容……</p>
+
+<h2>章节 12</h2>
+<p>这边显示该章节的内容……</p>
+
+<h2>章节 13</h2>
+<p>这边显示该章节的内容……</p>
+
+<h2>章节 14</h2>
+<p>这边显示该章节的内容……</p>
+
+<h2>章节 15</h2>
+<p>这边显示该章节的内容……</p>
+
+<h2>章节 16</h2>
+<p>这边显示该章节的内容……</p>
+
+<h2>章节 17</h2>
+<p>这边显示该章节的内容……</p>
+
+
+<a href="//www.runoob.com/" target="_top">点击这里!</a> 
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/09/16/%E5%B0%8F%E7%9F%A5%E8%AF%86%E8%AE%B0%E5%BD%95/" rel="prev" title="小知识记录">
+                  <i class="fa fa-chevron-left"></i> 小知识记录
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/09/16/ROS%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" rel="next" title="ROS学习记录">
+                  ROS学习记录 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yan</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+      
+
+
+
+
+
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

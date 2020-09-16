@@ -22,21 +22,22 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
   </script>
 
-  <meta name="description" content="引言 优质博客 java集合继承关系图集合概述   java集合框架图  Collection集合中存储的都是对象的引用(地址)。    集合的输出 四种输出方式 Iterator ListIterator Enumeration foreach   注意： 在迭代时，不可以通过集合对象的方法操作集合中的元素，因为会发生ConcurrentModificationException异常。所以，在迭">
+  <meta name="description" content="引言 优质博客 JavaGuide java集合继承关系图   https:&#x2F;&#x2F;www.runoob.com&#x2F;java&#x2F;java-stack-class.html      集合概述 java集合框架图  集合涉及到的常见接口Iterator接口 主要方法 boolean hasNext() E next()      Comparable接口 重写compareTo方法（大于 返回正  &#x3D;&#x3D; 返">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java集合">
 <meta property="og:url" content="http://yoursite.com/2020/09/05/Java%E9%9B%86%E5%90%88/index.html">
 <meta property="og:site_name" content="shytiger Blog">
-<meta property="og:description" content="引言 优质博客 java集合继承关系图集合概述   java集合框架图  Collection集合中存储的都是对象的引用(地址)。    集合的输出 四种输出方式 Iterator ListIterator Enumeration foreach   注意： 在迭代时，不可以通过集合对象的方法操作集合中的元素，因为会发生ConcurrentModificationException异常。所以，在迭">
+<meta property="og:description" content="引言 优质博客 JavaGuide java集合继承关系图   https:&#x2F;&#x2F;www.runoob.com&#x2F;java&#x2F;java-stack-class.html      集合概述 java集合框架图  集合涉及到的常见接口Iterator接口 主要方法 boolean hasNext() E next()      Comparable接口 重写compareTo方法（大于 返回正  &#x3D;&#x3D; 返">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2014/01/2243690-9cd9c896e0d512ed.gif">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200905155442847.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwODkyNTEx,size_16,color_FFFFFF,t_70#pic_center">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200905162053918.png#pic_center">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200905162201254.png#pic_center">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200905162910374.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200908103807718.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwODkyNTEx,size_16,color_FFFFFF,t_70#pic_center">
 <meta property="og:image" content="https://images2015.cnblogs.com/blog/1010726/201706/1010726-20170621005616085-269540653.png">
 <meta property="article:published_time" content="2020-09-05T01:18:44.000Z">
-<meta property="article:modified_time" content="2020-09-05T08:50:51.632Z">
+<meta property="article:modified_time" content="2020-09-08T02:38:22.575Z">
 <meta property="article:author" content="yan">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://www.runoob.com/wp-content/uploads/2014/01/2243690-9cd9c896e0d512ed.gif">
@@ -156,7 +157,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">集合概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Collection"><span class="nav-number">3.</span> <span class="nav-text">Collection</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#List%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.1.</span> <span class="nav-text">List接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList%E7%B1%BB"><span class="nav-number">3.1.1.</span> <span class="nav-text">ArrayList类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedList%E7%B1%BB"><span class="nav-number">3.1.2.</span> <span class="nav-text">LinkedList类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vector%E7%B1%BB"><span class="nav-number">3.1.3.</span> <span class="nav-text">Vector类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Queue%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.2.</span> <span class="nav-text">Queue接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PriorityQueue%E7%B1%BB"><span class="nav-number">3.2.1.</span> <span class="nav-text">PriorityQueue类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dequeue%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.3.</span> <span class="nav-text">Dequeue接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayDeque%E7%B1%BB"><span class="nav-number">3.3.1.</span> <span class="nav-text">ArrayDeque类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.4.</span> <span class="nav-text">Set接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet%E7%B1%BB"><span class="nav-number">3.4.1.</span> <span class="nav-text">HashSet类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedHashSet%E7%B1%BB"><span class="nav-number">3.4.2.</span> <span class="nav-text">LinkedHashSet类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SortedSet%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.4.3.</span> <span class="nav-text">SortedSet接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TreeSet%E7%B1%BB"><span class="nav-number">3.4.3.1.</span> <span class="nav-text">TreeSet类</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Map%E6%8E%A5%E5%8F%A3"><span class="nav-number">4.</span> <span class="nav-text">Map接口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HashTable-%E7%B1%BB"><span class="nav-number">4.1.</span> <span class="nav-text">HashTable 类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-%E7%B1%BB"><span class="nav-number">4.2.</span> <span class="nav-text">HashMap  类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedHashMap-%E7%B1%BB"><span class="nav-number">4.2.1.</span> <span class="nav-text">LinkedHashMap 类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SortedMap-%E6%8E%A5%E5%8F%A3"><span class="nav-number">4.3.</span> <span class="nav-text">SortedMap 接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TreeMap%E7%B1%BB"><span class="nav-number">4.3.1.</span> <span class="nav-text">TreeMap类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96-%E8%8D%89%E7%A8%BF"><span class="nav-number">5.</span> <span class="nav-text">其他(草稿)</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">集合概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E6%B6%89%E5%8F%8A%E5%88%B0%E7%9A%84%E5%B8%B8%E8%A7%81%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.</span> <span class="nav-text">集合涉及到的常见接口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Iterator%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.1.</span> <span class="nav-text">Iterator接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparable%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.2.</span> <span class="nav-text">Comparable接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparator%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.3.</span> <span class="nav-text">Comparator接口</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Collection-%E6%8E%A5%E5%8F%A3"><span class="nav-number">4.</span> <span class="nav-text">Collection 接口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#List%E6%8E%A5%E5%8F%A3"><span class="nav-number">4.1.</span> <span class="nav-text">List接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList%E7%B1%BB"><span class="nav-number">4.1.1.</span> <span class="nav-text">ArrayList类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedList%E7%B1%BB"><span class="nav-number">4.1.2.</span> <span class="nav-text">LinkedList类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vector%E7%B1%BB"><span class="nav-number">4.1.3.</span> <span class="nav-text">Vector类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Stack%E7%B1%BB"><span class="nav-number">4.1.3.1.</span> <span class="nav-text">Stack类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Queue%E6%8E%A5%E5%8F%A3"><span class="nav-number">4.2.</span> <span class="nav-text">Queue接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PriorityQueue%E7%B1%BB"><span class="nav-number">4.2.1.</span> <span class="nav-text">PriorityQueue类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deque%E6%8E%A5%E5%8F%A3"><span class="nav-number">4.3.</span> <span class="nav-text">Deque接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayDeque%E7%B1%BB"><span class="nav-number">4.3.1.</span> <span class="nav-text">ArrayDeque类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set%E6%8E%A5%E5%8F%A3"><span class="nav-number">4.4.</span> <span class="nav-text">Set接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet%E7%B1%BB"><span class="nav-number">4.4.1.</span> <span class="nav-text">HashSet类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedHashSet%E7%B1%BB"><span class="nav-number">4.4.2.</span> <span class="nav-text">LinkedHashSet类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SortedSet%E6%8E%A5%E5%8F%A3"><span class="nav-number">4.4.3.</span> <span class="nav-text">SortedSet接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TreeSet%E7%B1%BB"><span class="nav-number">4.4.3.1.</span> <span class="nav-text">TreeSet类</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Map%E6%8E%A5%E5%8F%A3"><span class="nav-number">5.</span> <span class="nav-text">Map接口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HashTable-%E7%B1%BB"><span class="nav-number">5.1.</span> <span class="nav-text">HashTable 类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-%E7%B1%BB"><span class="nav-number">5.2.</span> <span class="nav-text">HashMap  类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedHashMap-%E7%B1%BB"><span class="nav-number">5.2.1.</span> <span class="nav-text">LinkedHashMap 类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SortedMap-%E6%8E%A5%E5%8F%A3"><span class="nav-number">5.3.</span> <span class="nav-text">SortedMap 接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TreeMap%E7%B1%BB"><span class="nav-number">5.3.1.</span> <span class="nav-text">TreeMap类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98"><span class="nav-number">6.</span> <span class="nav-text">其他问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%BF%AB%E9%80%9F%E5%A4%B1%E8%B4%A5%EF%BC%88fail-fast%EF%BC%89"><span class="nav-number">6.1.</span> <span class="nav-text">什么是快速失败（fail-fast）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%AE%89%E5%85%A8%E5%A4%B1%E8%B4%A5%EF%BC%88fail-safe%EF%BC%89"><span class="nav-number">6.2.</span> <span class="nav-text">什么是安全失败（fail-safe）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Arrays-asList"><span class="nav-number">6.3.</span> <span class="nav-text">Arrays.asList()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E5%8F%AF%E9%80%89%E6%93%8D%E4%BD%9C"><span class="nav-number">6.4.</span> <span class="nav-text">Java可选操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96-%E8%8D%89%E7%A8%BF"><span class="nav-number">7.</span> <span class="nav-text">其他(草稿)</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -169,7 +170,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -236,10 +237,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-09-05 09:18:44 / Modified: 16:50:51" itemprop="dateCreated datePublished" datetime="2020-09-05T09:18:44+08:00">2020-09-05</time>
+              <time title="Created: 2020-09-05 09:18:44" itemprop="dateCreated datePublished" datetime="2020-09-05T09:18:44+08:00">2020-09-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-08 10:38:22" itemprop="dateModified" datetime="2020-09-08T10:38:22+08:00">2020-09-08</time>
+              </span>
 
           
 
@@ -252,12 +259,29 @@
     <div class="post-body" itemprop="articleBody">
         <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><ul>
 <li>优质博客<ul>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jing99/p/7057245.html">java集合继承关系图</a><h1 id="集合概述"><a href="#集合概述" class="headerlink" title="集合概述"></a>集合概述</h1></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Snailclimb/JavaGuide/blob/master/docs/java/collection/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98.md">JavaGuide</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jing99/p/7057245.html">java集合继承关系图</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-stack-class.html">https://www.runoob.com/java/java-stack-class.html</a>  </li>
 </ul>
 </li>
+</ul>
+<h1 id="集合概述"><a href="#集合概述" class="headerlink" title="集合概述"></a>集合概述</h1><ul>
 <li>java集合框架图<br><img src="https://www.runoob.com/wp-content/uploads/2014/01/2243690-9cd9c896e0d512ed.gif"><br><img src="https://img-blog.csdnimg.cn/20200905155442847.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwODkyNTEx,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></li>
 </ul>
-<h1 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h1><p><img src="https://img-blog.csdnimg.cn/20200905162053918.png#pic_center" alt="在这里插入图片描述"><br><strong>集合中存储的都是对象的引用(地址)。</strong>  </p>
+<h1 id="集合涉及到的常见接口"><a href="#集合涉及到的常见接口" class="headerlink" title="集合涉及到的常见接口"></a>集合涉及到的常见接口</h1><h2 id="Iterator接口"><a href="#Iterator接口" class="headerlink" title="Iterator接口"></a>Iterator接口</h2><ul>
+<li>主要方法<ul>
+<li>boolean hasNext()</li>
+<li>E next()  </li>
+</ul>
+</li>
+</ul>
+<h2 id="Comparable接口"><a href="#Comparable接口" class="headerlink" title="Comparable接口"></a>Comparable接口</h2><ul>
+<li>重写compareTo方法（大于 返回正  == 返回0 小于 返回负）  </li>
+</ul>
+<h2 id="Comparator接口"><a href="#Comparator接口" class="headerlink" title="Comparator接口"></a>Comparator接口</h2><ul>
+<li>从写compare()方法  </li>
+</ul>
+<h1 id="Collection-接口"><a href="#Collection-接口" class="headerlink" title="Collection 接口"></a>Collection 接口</h1><p><img src="https://img-blog.csdnimg.cn/20200905162053918.png#pic_center" alt="在这里插入图片描述"><br><strong>集合中存储的都是对象的引用(地址)。</strong>  </p>
 <ul>
 <li>集合的输出<ul>
 <li>四种输出方式<ul>
@@ -268,43 +292,249 @@
 </ul>
 </li>
 <li>注意：<ul>
-<li><em>在迭代时，不可以通过集合对象的方法操作集合中的元素，因为会发生ConcurrentModificationException异常。所以，在迭代器时，只能用迭代器的放过操作元素，可是Iterator方法是有限的，只能对元素进行判断，取出，删除的操作，如果想要其他的操作如添加，修改等，就需要使用其子接口，ListIterator。该接口只能通过List集合的listIterator方法获取。</em><h2 id="List接口"><a href="#List接口" class="headerlink" title="List接口"></a>List接口</h2>(对付顺序的好帮手)： 存储的元素是有序的、可重复的。<br><img src="https://img-blog.csdnimg.cn/20200905162201254.png#pic_center" alt="在这里插入图片描述"></li>
+<li><em>在迭代时，不可以通过集合对象的方法操作集合中的元素，因为会发生ConcurrentModificationException异常。所以，在迭代器时，只能用迭代器的放过操作元素，可是Iterator方法是有限的，只能对元素进行判断，取出，删除的操作，如果想要其他的操作如添加，修改等，就需要使用其子接口，ListIterator。该接口只能通过List集合的listIterator方法获取。</em>  </li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
+<h2 id="List接口"><a href="#List接口" class="headerlink" title="List接口"></a>List接口</h2><p>(对付顺序的好帮手)： 存储的元素是有序的、可重复的。<br><img src="https://img-blog.csdnimg.cn/20200905162201254.png#pic_center" alt="在这里插入图片描述"></p>
 <h3 id="ArrayList类"><a href="#ArrayList类" class="headerlink" title="ArrayList类"></a>ArrayList类</h3><ul>
 <li>Object[] 数组</li>
 <li>查询快</li>
 <li>add(E e) O(1)</li>
-<li>add(int index, E element)  O(n-i)<h3 id="LinkedList类"><a href="#LinkedList类" class="headerlink" title="LinkedList类"></a>LinkedList类</h3></li>
+<li>add(int index, E element)  O(n-i)  </li>
+<li>优秀参考：<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/Snailclimb/JavaGuide/blob/master/docs/java/collection/ArrayList-Grow.md">通过源码一步一步分析 ArrayList 扩容机制</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Snailclimb/JavaGuide/blob/master/docs/java/collection/ArrayList.md">ArrayList核心源码</a>   </li>
+</ul>
+</li>
+</ul>
+<h3 id="LinkedList类"><a href="#LinkedList类" class="headerlink" title="LinkedList类"></a>LinkedList类</h3><ul>
 <li>双向链表实现</li>
 <li>查询慢</li>
 <li>add(E e)  O(1)</li>
-<li>add(int index, E element) o(n)<h3 id="Vector类"><a href="#Vector类" class="headerlink" title="Vector类"></a>Vector类</h3></li>
-<li>线程安全的，效率低<h2 id="Queue接口"><a href="#Queue接口" class="headerlink" title="Queue接口"></a>Queue接口</h2><h3 id="PriorityQueue类"><a href="#PriorityQueue类" class="headerlink" title="PriorityQueue类"></a>PriorityQueue类</h3><h2 id="Dequeue接口"><a href="#Dequeue接口" class="headerlink" title="Dequeue接口"></a>Dequeue接口</h2><h3 id="ArrayDeque类"><a href="#ArrayDeque类" class="headerlink" title="ArrayDeque类"></a>ArrayDeque类</h3><h2 id="Set接口"><a href="#Set接口" class="headerlink" title="Set接口"></a>Set接口</h2><h3 id="HashSet类"><a href="#HashSet类" class="headerlink" title="HashSet类"></a>HashSet类</h3></li>
+<li>add(int index, E element) o(n)   </li>
+</ul>
+<style>
+table th:first-of-type {
+    width: 2cm;
+}
+table th:nth-of-type(2) {
+    width: 300pt;
+}
+table th:nth-of-type(3) {
+    width: 12em;
+}
+table th:nth-of-type(4) {
+    width: 12em;
+}
+table th:nth-of-type(5) {
+    width: 12em;
+}
+</style>  
+<table>
+<thead>
+<tr>
+<th>操作类型</th>
+<th>增</th>
+<th>删除</th>
+<th>改</th>
+<th>查</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>函数</td>
+<td>add​(int index, E element)<br> add​(E e)<br> <strong>offer​(E e)</strong><br> addAll​(Collection&lt;? extends E&gt; c)<br> <strong>addFirst​(E e)</strong><br> <strong>addLast​(E e)</strong><br></td>
+<td>clear​()<br> poll​()<br> remove​(int index)<br> remove​(Object o)<br></td>
+<td>set​(int index, E element)<br></td>
+<td>contains​(Object o)<br>  get​(int index)<br></td>
+</tr>
+</tbody></table>
+<ul>
+<li>LinkedList可以实现List,Queue,Deque(双端队列)接口  </li>
+</ul>
+<h3 id="Vector类"><a href="#Vector类" class="headerlink" title="Vector类"></a>Vector类</h3><ul>
+<li>线程安全的，效率低  </li>
+</ul>
+<h4 id="Stack类"><a href="#Stack类" class="headerlink" title="Stack类"></a>Stack类</h4><p>Vector类的子类</p>
+<ol>
+<li>boolean empty()<br>判断栈是否为空</li>
+<li>E peek()<br>返回栈顶对象，不移除</li>
+<li>E pop()<br>返回栈顶对象，并移除</li>
+<li>E push(E item)<br>压入栈顶</li>
+<li>int search(Object o)<br>返回对象在栈的位置  </li>
+</ol>
+<h2 id="Queue接口"><a href="#Queue接口" class="headerlink" title="Queue接口"></a>Queue接口</h2><ul>
+<li><p>Queue接口定义了如下6个方法，我们常用的LinkedList类就实现了Queue接口。 </p>
+<ol>
+<li>boolean add(E e)<br>向队列中添加元素</li>
+<li>E element()<br>返回队列的头，且不移除</li>
+<li>boolean offer(E e)<br>向队列中添加元素</li>
+<li>E peek()<br>返回队列的头，且不移除</li>
+<li>E poll()<br>返回队列的头，且移除</li>
+<li>E remove()<br>返回队列的头，且移除<br>add、element、remove会在操作失败时抛出异常，而offer、peek、poll在操作失败时返回特殊值。   </li>
+</ol>
+</li>
+<li><p><strong>offer()与add()的区别</strong></p>
+<ul>
+<li>超出队列界限时，add（）方法是抛出异常让你处理，而offer（）方法是直接返回false</li>
+<li>推荐使用offer()  </li>
+</ul>
+</li>
+</ul>
+<h3 id="PriorityQueue类"><a href="#PriorityQueue类" class="headerlink" title="PriorityQueue类"></a>PriorityQueue类</h3><ul>
+<li>概述<br>实际上是一个堆（不指定Comparator时默认为最小堆）<br>队列既可以根据元素的自然顺序来排序，也可以根据 Comparator来设置排序规则。<br>队列的头是按指定排序方式的最小元素。如果多个元素都是最小值，则头是其中一个元素。<br>新建对象的时候可以指定一个初始容量，其容量会自动增加。</li>
+<li>参考博客<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/gnivor/p/4841191.html">Java学习笔记–PriorityQueue(优先队列)(堆)</a>  </li>
+<li>注意点<ul>
+<li><strong>插入方法（offer()、poll()、remove() 、add() 方法）时间复杂度为O(log(n))</strong> ；</li>
+<li>**remove(Object) 和 contains(Object) 时间复杂度为O(n)**；</li>
+<li>检索方法（peek、element 和 size）时间复杂度为常量。</li>
+<li>不允许使用 null 元素。</li>
+<li>不是同步的。不是线程安全的。如果多个线程中的任意线程从结构上修改了列表， 则这些线程不应同时访问 PriorityQueue实例。保证线程安全可以使用PriorityBlockingQueue 类。</li>
+<li>该队列是用数组实现，但是数组大小可以动态增加，容量无限。</li>
+<li>此类及其迭代器实现了 Collection 和 Iterator 接口的所有可选 方法。</li>
+<li>可以在构造函数中指定如何排序。<code>PriorityQueue(int initialCapacity, Comparator&lt;? super E&gt; comparator)</code></li>
+</ul>
+</li>
+</ul>
+<p>优先队列主要方法： </p>
+<table>
+<thead>
+<tr>
+<th>Modifier and Type</th>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>boolean</td>
+<td>add​(E e)</td>
+<td>将指定的元素插入到此优先级队列中。</td>
+</tr>
+<tr>
+<td>void</td>
+<td>clear​()</td>
+<td>从此优先级队列中删除所有元素。</td>
+</tr>
+<tr>
+<td>Comparator&lt;? super E&gt;</td>
+<td>comparator​()</td>
+<td>返回用于为了在这个队列中的元素，或比较null如果此队列根据所述排序natural ordering的元素。</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>contains​(Object o)</td>
+<td>如果此队列包含指定的元素，则返回 true 。</td>
+</tr>
+<tr>
+<td>Iterator<E></td>
+<td>iterator​()</td>
+<td>返回此队列中的元素的迭代器。</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>offer​(E e)</td>
+<td>将指定的元素插入到此优先级队列中。</td>
+</tr>
+<tr>
+<td>E</td>
+<td>peek​()</td>
+<td>检索但不删除此队列的头，如果此队列为空，则返回 null 。</td>
+</tr>
+<tr>
+<td>E</td>
+<td>poll​()</td>
+<td>检索并删除此队列的头部，如果此队列为空，则返回 null 。</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>remove​(Object o)</td>
+<td>从该队列中删除指定元素的单个实例（如果存在）。</td>
+</tr>
+<tr>
+<td>int</td>
+<td>size​()</td>
+<td>返回此集合中的元素数。</td>
+</tr>
+<tr>
+<td>Spliterator<E></td>
+<td>spliterator​()</td>
+<td>在此队列中的元素上创建late-binding和故障快速 Spliterator 。</td>
+</tr>
+<tr>
+<td>Object[]</td>
+<td>toArray​()</td>
+<td>返回一个包含此队列中所有元素的数组。</td>
+</tr>
+<tr>
+<td><T> T[]</td>
+<td>toArray​(T[] a)</td>
+<td>返回一个包含此队列中所有元素的数组; 返回的数组的运行时类型是指定数组的运行时类型。</td>
+</tr>
+</tbody></table>
+<h2 id="Deque接口"><a href="#Deque接口" class="headerlink" title="Deque接口"></a>Deque接口</h2><p>双端队列 ，LinkedList类和ArrayDeque类实现了该接口。可以操作两端</p>
+<h3 id="ArrayDeque类"><a href="#ArrayDeque类" class="headerlink" title="ArrayDeque类"></a>ArrayDeque类</h3><ul>
+<li>与LinkedList类 相似，区别是底层为数组实现  </li>
+</ul>
+<h2 id="Set接口"><a href="#Set接口" class="headerlink" title="Set接口"></a>Set接口</h2><h3 id="HashSet类"><a href="#HashSet类" class="headerlink" title="HashSet类"></a>HashSet类</h3><ul>
 <li>HashSet是如何保证元素唯一性的呢？<blockquote>
-<p>是通过元素的两个方法，hashCode和equals来完成。<br>  如果元素的HashCode值相同，才会判断equals是否为true。<br>  如果元素的hashcode值不同，不会调用equals。　　　</p>
+<p>是通过元素的两个方法，hashCode和equals来完成。<br>  如果元素的HashCode值相同，才会判断equals是否为true。<br>  如果元素的hashcode值不同，不会调用equals。  
+　　　</p>
 </blockquote>
 <h3 id="LinkedHashSet类"><a href="#LinkedHashSet类" class="headerlink" title="LinkedHashSet类"></a>LinkedHashSet类</h3></li>
-<li>能够按照添加的顺序遍历<h3 id="SortedSet接口"><a href="#SortedSet接口" class="headerlink" title="SortedSet接口"></a>SortedSet接口</h3><h4 id="TreeSet类"><a href="#TreeSet类" class="headerlink" title="TreeSet类"></a>TreeSet类</h4></li>
+<li>能够按照添加的顺序遍历  </li>
+</ul>
+<h3 id="SortedSet接口"><a href="#SortedSet接口" class="headerlink" title="SortedSet接口"></a>SortedSet接口</h3><h4 id="TreeSet类"><a href="#TreeSet类" class="headerlink" title="TreeSet类"></a>TreeSet类</h4><ul>
 <li>底层为红黑树</li>
 <li>能够按照添加元素的顺序进行遍历，排序的方式有自然排序和定制排序。</li>
 </ul>
 <h1 id="Map接口"><a href="#Map接口" class="headerlink" title="Map接口"></a>Map接口</h1><p>&lt;Key,Value&gt;<br><img src="https://img-blog.csdnimg.cn/20200905162910374.png#pic_center" alt="在这里插入图片描述"></p>
 <h2 id="HashTable-类"><a href="#HashTable-类" class="headerlink" title="HashTable 类"></a>HashTable 类</h2><ul>
 <li>线程安全 其内部方法基本经过<code>synchronized</code>修饰 （替代 ConcurrentHashMap）</li>
-<li>效率较低，基本被淘汰<h2 id="HashMap-类"><a href="#HashMap-类" class="headerlink" title="HashMap  类"></a>HashMap  类</h2></li>
-<li>底层数据结构： 数组 + 链表（jdk1.8后 链表长于（8）将链表转为红黑树）</li>
-<li>初始容量大小和每次扩充容量大小：<ul>
-<li>HashMap 默认的初始化大小为 16。之后每次扩充，容量变为原来的 2 倍。</li>
-<li>创建时如果给定了容量初始值，那么 Hashtable 会直接使用你给定的大小，而 HashMap 会将其扩充为 2 的幂次方大小（HashMap 中的tableSizeFor()方法保证，下面给出了源代码）。也就是说 HashMap 总是使用 2 的幂作为哈希表的大小。<h3 id="LinkedHashMap-类"><a href="#LinkedHashMap-类" class="headerlink" title="LinkedHashMap 类"></a>LinkedHashMap 类</h3></li>
-<li>在上<code>HashMap</code>结构的基础上，增加了一条双向链表，使得上面的结构可以保持键值对的<strong>插入顺序</strong>。<h2 id="SortedMap-接口"><a href="#SortedMap-接口" class="headerlink" title="SortedMap 接口"></a>SortedMap 接口</h2><h3 id="TreeMap类"><a href="#TreeMap类" class="headerlink" title="TreeMap类"></a>TreeMap类</h3></li>
+<li>效率较低，基本被淘汰  </li>
+</ul>
+<h2 id="HashMap-类"><a href="#HashMap-类" class="headerlink" title="HashMap  类"></a>HashMap  类</h2><ul>
+<li>优秀参考链接：<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/Snailclimb/JavaGuide/blob/master/docs/java/collection/HashMap.md">HashMap(JDK1.8)源码 </a></li>
 </ul>
 </li>
+<li>底层数据结构： 数组 + 链表（jdk1.8后 链表长于（8）将链表转为红黑树）</li>
+<li>扩容机制：<ul>
+<li>当HashMap中的元素个数超过数组大小(数组总大小length,不是数组中个数size)*loadFactor时，就会进行数组扩容，loadFactor的默认值为0.75，这是一个折中的取值。也就是说，默认情况下，数组大小为16，那么当HashMap中元素个数超过16*0.75=12（这个值就是代码中的threshold值，也叫做临界值）的时候，就把数组的大小扩展为 2*16=32，即扩大一倍，然后重新计算每个元素在数组中的位置。</li>
+</ul>
+</li>
+<li>初始容量大小和每次扩充容量大小：<ul>
+<li>HashMap 默认的初始化大小为 16。之后每次扩充，容量变为原来的 2 倍。</li>
+<li>创建时如果给定了容量初始值，那么 Hashtable 会直接使用你给定的大小，而 HashMap 会将其扩充为 2 的幂次方大小（HashMap 中的tableSizeFor()方法保证，下面给出了源代码）。也就是说 HashMap 总是使用 2 的幂作为哈希表的大小。 </li>
+<li>为什么是2的幂次？<ul>
+<li>因为在计算元素该存放的位置的时候，用到的算法是将元素的hashcode与当前map长度-1进行与运算。源码：<pre><code class="Java">  static int indexFor(int h, int length) &amp;#123;
+      // assert Integer.bitCount(length) == 1 : &quot;length must be a non-zero power of 2&quot;;
+      return h &amp; (length-1);
+&amp;#125;</code></pre>
+如果map长度为2的幂次，那长度-1的二进制一定为11111…这种形式，进行与运算就看元素的hashcode，但是如果map的长度不是2的幂次，比如为15，那长度-1就是14，二进制为1110，无论与谁相与最后一位一定是0，0001，0011，0101，1001，1011，0111，1101这几个位置就永远都不能存放元素了，空间浪费相当大。也增加了添加元素是发生碰撞的机会。减慢了查询效率。所以Hashmap的大小是2的幂次。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/zmx729618/article/details/52795493">Java遍历HashMap并修改(remove)</a></li>
+</ul>
+<h3 id="LinkedHashMap-类"><a href="#LinkedHashMap-类" class="headerlink" title="LinkedHashMap 类"></a>LinkedHashMap 类</h3><ul>
+<li>HashMap的子类，在上<code>HashMap</code>结构的基础上，增加了一条双向链表，使得上面的结构可以保持键值对的<strong>插入顺序</strong>。  </li>
+</ul>
+<h2 id="SortedMap-接口"><a href="#SortedMap-接口" class="headerlink" title="SortedMap 接口"></a>SortedMap 接口</h2><h3 id="TreeMap类"><a href="#TreeMap类" class="headerlink" title="TreeMap类"></a>TreeMap类</h3><ul>
 <li>底层数据结构：红黑树</li>
 </ul>
+<h1 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h1><h2 id="什么是快速失败（fail-fast）"><a href="#什么是快速失败（fail-fast）" class="headerlink" title="什么是快速失败（fail-fast）"></a>什么是快速失败（fail-fast）</h2><ul>
+<li>快速失败(fail-fast) 是 Java 集合的一种错误检测机制。在使用迭代器对集合进行遍历的时候，我们在多线程下操作非安全失败(fail-safe)的集合类可能就会触发 fail-fast 机制，导致抛出 ConcurrentModificationException 异常。 另外，在单线程下，如果在遍历过程中对集合对象的内容进行了修改的话也会触发 fail-fast 机制。</li>
+<li>实现机制： 每当迭代器使用 hashNext()/next()遍历下一个元素之前，都会检测 modCount 变量是否为 expectedModCount 值，是的话就返回遍历；否则抛出异常，终止遍历。如果我们在集合被遍历期间对其进行修改的话，就会改变 modCount 的值，进而导致 modCount != expectedModCount ，进而抛出 ConcurrentModificationException 异常。</li>
+<li><strong>通过 Iterator 的方法修改集合的话会修改到 expectedModCount 的值，所以不会抛出异常。</strong></li>
+</ul>
+<h2 id="什么是安全失败（fail-safe）"><a href="#什么是安全失败（fail-safe）" class="headerlink" title="什么是安全失败（fail-safe）"></a>什么是安全失败（fail-safe）</h2><ul>
+<li>采用安全失败机制的集合容器，在遍历时不是直接在集合内容上访问的，而是先复制原有集合内容，在拷贝的集合上进行遍历。所以，在遍历过程中对原集合所作的修改并不能被迭代器检测到，故不会抛 ConcurrentModificationException 异常。</li>
+</ul>
+<h2 id="Arrays-asList"><a href="#Arrays-asList" class="headerlink" title="Arrays.asList()"></a>Arrays.asList()</h2><p><img src="https://img-blog.csdnimg.cn/20200908103807718.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwODkyNTEx,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="Java可选操作"><a href="#Java可选操作" class="headerlink" title="Java可选操作"></a>Java可选操作</h2><p>简单说就是抽象类的的某些bai派生类实现里，或者接口的du某个实现类里面，某个方法可能zhi是无意义的，调用该方dao法会抛出一个异常。例如在collection的某些实现类里，里面的元素可能都是只读的，那么add这个接口是无意义的，调用会抛出<code>UnspportedOperationException</code>异常。<br>从设计的角度说，如果一个接口的方法设计为optional，表示这个方法不是为所有的实现而设定的，而只是为某一类的实现而设定的。</p>
 <h1 id="其他-草稿"><a href="#其他-草稿" class="headerlink" title="其他(草稿)"></a>其他(草稿)</h1><ul>
 <li>List接口<ul>
 <li>ArrayList <ul>
@@ -477,6 +707,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2020/09/08/Java-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95-%E5%8F%8D%E5%B0%84-%E6%B3%A8%E8%A7%A3/" rel="next" title="Java 单元测试 反射 注解">
+                  Java 单元测试 反射 注解 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
       </footer>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
+  </script>
+
+  <meta name="description" content="引言Github 第一章解决面试问题的整体思路第二章面试中的时间复杂度对数据规模的一个概念常见的复杂度分析复杂度实验递归算法的复杂度分析均摊复杂度分析第三章数组中的问题基本算法思路的应用双索引技术第四章两类查找问题Set和Map第五章在链表中穿针引线第六章栈和队列的使用第七章二叉树和递归第八章递归与回溯组合问题二维平面上使用回溯法回溯法是经典人工智能的基础第九章动态规划第十章贪心算法第十一章">
+<meta property="og:type" content="article">
+<meta property="og:title" content="玩转算法面试leetcode记录">
+<meta property="og:url" content="http://yoursite.com/2020/09/15/%E7%8E%A9%E8%BD%AC%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95leetcode%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="shytiger Blog">
+<meta property="og:description" content="引言Github 第一章解决面试问题的整体思路第二章面试中的时间复杂度对数据规模的一个概念常见的复杂度分析复杂度实验递归算法的复杂度分析均摊复杂度分析第三章数组中的问题基本算法思路的应用双索引技术第四章两类查找问题Set和Map第五章在链表中穿针引线第六章栈和队列的使用第七章二叉树和递归第八章递归与回溯组合问题二维平面上使用回溯法回溯法是经典人工智能的基础第九章动态规划第十章贪心算法第十一章">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-15T08:29:40.000Z">
+<meta property="article:modified_time" content="2020-09-15T08:45:40.740Z">
+<meta property="article:author" content="yan">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://yoursite.com/2020/09/15/%E7%8E%A9%E8%BD%AC%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95leetcode%E8%AE%B0%E5%BD%95/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>玩转算法面试leetcode记录 | shytiger Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="shytiger Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">shytiger Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0"><span class="nav-number">2.</span> <span class="nav-text">第一章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98%E7%9A%84%E6%95%B4%E4%BD%93%E6%80%9D%E8%B7%AF"><span class="nav-number">2.1.</span> <span class="nav-text">解决面试问题的整体思路</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0"><span class="nav-number">3.</span> <span class="nav-text">第二章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E8%AF%95%E4%B8%AD%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">3.1.</span> <span class="nav-text">面试中的时间复杂度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E6%95%B0%E6%8D%AE%E8%A7%84%E6%A8%A1%E7%9A%84%E4%B8%80%E4%B8%AA%E6%A6%82%E5%BF%B5"><span class="nav-number">3.2.</span> <span class="nav-text">对数据规模的一个概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">3.3.</span> <span class="nav-text">常见的复杂度分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%AE%9E%E9%AA%8C"><span class="nav-number">3.4.</span> <span class="nav-text">复杂度实验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%9A%84%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">3.5.</span> <span class="nav-text">递归算法的复杂度分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9D%87%E6%91%8A%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">3.6.</span> <span class="nav-text">均摊复杂度分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0"><span class="nav-number">4.</span> <span class="nav-text">第三章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">4.1.</span> <span class="nav-text">数组中的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95%E6%80%9D%E8%B7%AF%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">4.2.</span> <span class="nav-text">基本算法思路的应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8C%E7%B4%A2%E5%BC%95%E6%8A%80%E6%9C%AF"><span class="nav-number">4.3.</span> <span class="nav-text">双索引技术</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0"><span class="nav-number">5.</span> <span class="nav-text">第四章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E7%B1%BB%E6%9F%A5%E6%89%BE%E9%97%AE%E9%A2%98"><span class="nav-number">5.1.</span> <span class="nav-text">两类查找问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set%E5%92%8CMap"><span class="nav-number">5.2.</span> <span class="nav-text">Set和Map</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0"><span class="nav-number">6.</span> <span class="nav-text">第五章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%A9%BF%E9%92%88%E5%BC%95%E7%BA%BF"><span class="nav-number">6.1.</span> <span class="nav-text">在链表中穿针引线</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0"><span class="nav-number">7.</span> <span class="nav-text">第六章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">7.1.</span> <span class="nav-text">栈和队列的使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0"><span class="nav-number">8.</span> <span class="nav-text">第七章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E5%92%8C%E9%80%92%E5%BD%92"><span class="nav-number">8.1.</span> <span class="nav-text">二叉树和递归</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0"><span class="nav-number">9.</span> <span class="nav-text">第八章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E4%B8%8E%E5%9B%9E%E6%BA%AF"><span class="nav-number">9.1.</span> <span class="nav-text">递归与回溯</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E9%97%AE%E9%A2%98"><span class="nav-number">9.2.</span> <span class="nav-text">组合问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E5%B9%B3%E9%9D%A2%E4%B8%8A%E4%BD%BF%E7%94%A8%E5%9B%9E%E6%BA%AF%E6%B3%95"><span class="nav-number">9.3.</span> <span class="nav-text">二维平面上使用回溯法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF%E6%B3%95%E6%98%AF%E7%BB%8F%E5%85%B8%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E5%9F%BA%E7%A1%80"><span class="nav-number">9.4.</span> <span class="nav-text">回溯法是经典人工智能的基础</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B9%9D%E7%AB%A0"><span class="nav-number">10.</span> <span class="nav-text">第九章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">10.1.</span> <span class="nav-text">动态规划</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E7%AB%A0"><span class="nav-number">11.</span> <span class="nav-text">第十章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="nav-number">11.1.</span> <span class="nav-text">贪心算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0"><span class="nav-number">12.</span> <span class="nav-text">第十一章</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">yan</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/15/%E7%8E%A9%E8%BD%AC%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95leetcode%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shytiger Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          玩转算法面试leetcode记录
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-09-15 16:29:40 / Modified: 16:45:40" itemprop="dateCreated datePublished" datetime="2020-09-15T16:29:40+08:00">2020-09-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p><a target="_blank" rel="noopener" href="https://github.com/liuyubobobo/Play-with-Algorithm-Interview.git">Github</a></p>
+<h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><h2 id="解决面试问题的整体思路"><a href="#解决面试问题的整体思路" class="headerlink" title="解决面试问题的整体思路"></a>解决面试问题的整体思路</h2><h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h1><h2 id="面试中的时间复杂度"><a href="#面试中的时间复杂度" class="headerlink" title="面试中的时间复杂度"></a>面试中的时间复杂度</h2><h2 id="对数据规模的一个概念"><a href="#对数据规模的一个概念" class="headerlink" title="对数据规模的一个概念"></a>对数据规模的一个概念</h2><h2 id="常见的复杂度分析"><a href="#常见的复杂度分析" class="headerlink" title="常见的复杂度分析"></a>常见的复杂度分析</h2><h2 id="复杂度实验"><a href="#复杂度实验" class="headerlink" title="复杂度实验"></a>复杂度实验</h2><h2 id="递归算法的复杂度分析"><a href="#递归算法的复杂度分析" class="headerlink" title="递归算法的复杂度分析"></a>递归算法的复杂度分析</h2><h2 id="均摊复杂度分析"><a href="#均摊复杂度分析" class="headerlink" title="均摊复杂度分析"></a>均摊复杂度分析</h2><h1 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h1><h2 id="数组中的问题"><a href="#数组中的问题" class="headerlink" title="数组中的问题"></a>数组中的问题</h2><h2 id="基本算法思路的应用"><a href="#基本算法思路的应用" class="headerlink" title="基本算法思路的应用"></a>基本算法思路的应用</h2><h2 id="双索引技术"><a href="#双索引技术" class="headerlink" title="双索引技术"></a>双索引技术</h2><h1 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h1><h2 id="两类查找问题"><a href="#两类查找问题" class="headerlink" title="两类查找问题"></a>两类查找问题</h2><h2 id="Set和Map"><a href="#Set和Map" class="headerlink" title="Set和Map"></a>Set和Map</h2><h1 id="第五章"><a href="#第五章" class="headerlink" title="第五章"></a>第五章</h1><h2 id="在链表中穿针引线"><a href="#在链表中穿针引线" class="headerlink" title="在链表中穿针引线"></a>在链表中穿针引线</h2><h1 id="第六章"><a href="#第六章" class="headerlink" title="第六章"></a>第六章</h1><h2 id="栈和队列的使用"><a href="#栈和队列的使用" class="headerlink" title="栈和队列的使用"></a>栈和队列的使用</h2><h1 id="第七章"><a href="#第七章" class="headerlink" title="第七章"></a>第七章</h1><h2 id="二叉树和递归"><a href="#二叉树和递归" class="headerlink" title="二叉树和递归"></a>二叉树和递归</h2><h1 id="第八章"><a href="#第八章" class="headerlink" title="第八章"></a>第八章</h1><h2 id="递归与回溯"><a href="#递归与回溯" class="headerlink" title="递归与回溯"></a>递归与回溯</h2><h2 id="组合问题"><a href="#组合问题" class="headerlink" title="组合问题"></a>组合问题</h2><h2 id="二维平面上使用回溯法"><a href="#二维平面上使用回溯法" class="headerlink" title="二维平面上使用回溯法"></a>二维平面上使用回溯法</h2><h2 id="回溯法是经典人工智能的基础"><a href="#回溯法是经典人工智能的基础" class="headerlink" title="回溯法是经典人工智能的基础"></a>回溯法是经典人工智能的基础</h2><h1 id="第九章"><a href="#第九章" class="headerlink" title="第九章"></a>第九章</h1><h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><h1 id="第十章"><a href="#第十章" class="headerlink" title="第十章"></a>第十章</h1><h2 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h2><h1 id="第十一章"><a href="#第十一章" class="headerlink" title="第十一章"></a>第十一章</h1>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/09/15/HTML%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" rel="prev" title="HTML学习记录">
+                  <i class="fa fa-chevron-left"></i> HTML学习记录
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/09/16/%E5%B0%8F%E7%9F%A5%E8%AF%86%E8%AE%B0%E5%BD%95/" rel="next" title="小知识记录">
+                  小知识记录 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yan</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+      
+
+
+
+
+
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
