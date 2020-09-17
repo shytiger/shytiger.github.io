@@ -39,7 +39,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200910202731231.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwODkyNTEx,size_16,color_FFFFFF,t_70#pic_center">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200911152804495.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwODkyNTEx,size_16,color_FFFFFF,t_70#pic_center">
 <meta property="article:published_time" content="2020-09-09T06:40:50.000Z">
-<meta property="article:modified_time" content="2020-09-11T11:50:09.949Z">
+<meta property="article:modified_time" content="2020-09-17T07:27:13.530Z">
 <meta property="article:author" content="yan">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200909200123480.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwODkyNTEx,size_16,color_FFFFFF,t_70#pic_center">
@@ -247,7 +247,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-11 19:50:09" itemprop="dateModified" datetime="2020-09-11T19:50:09+08:00">2020-09-11</time>
+                <time title="Modified: 2020-09-17 15:27:13" itemprop="dateModified" datetime="2020-09-17T15:27:13+08:00">2020-09-17</time>
               </span>
 
           
@@ -308,7 +308,8 @@
         1. exit
         2. quit</code></pre>
 <ul>
-<li>MySQL目录结构<br><img src="https://img-blog.csdnimg.cn/20200909200123480.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwODkyNTEx,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><pre><code>      1. MySQL安装目录：basedir=&quot;D:/develop/MySQL/&quot;
+<li><p>MySQL目录结构<br><img src="https://img-blog.csdnimg.cn/20200909200123480.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwODkyNTEx,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">  </p>
+<pre><code>      1. MySQL安装目录：basedir=&quot;D:/develop/MySQL/&quot;
           * 配置文件 my.ini
       2. MySQL数据目录：datadir=&quot;C:/ProgramData/MySQL/MySQL Server 5.5/Data/&quot;
           * 几个概念
@@ -420,9 +421,10 @@
             alter table 表名 character set 字符集名称;
         3. 添加一列
             alter table 表名 add 列名 数据类型;
-        4. 修改列名称 类型
+        4. 修改列名称 类型（如果已有类型为double 能将其修改为int么？）
             alter table 表名 change 列名 新列别 新数据类型;
             alter table 表名 modify 列名 新数据类型;
+            注： Double转 int  四舍五入（&lt;=0.5舍去，&gt;0.5入）
         5. 删除列
             alter table 表名 drop 列名;
     4. D(Delete):删除
@@ -478,7 +480,7 @@
         * 注意：
             * 如果查询所有字段，则可以使用*来替代字段列表。
     2. 去除重复：
-        * distinct
+        * distinct 
     3. 计算列
         * 一般可以使用四则运算计算一些列的值。（一般只会进行数值型的计算）
         * ifnull(表达式1,表达式2)：null参与的运算，计算结果都为null
@@ -497,12 +499,43 @@
         * LIKE：模糊查询
             * 占位符：
                 * _:单个任意字符
-                * %：多个任意字符
+                * %：多个任意字符（包含0个）
+            * 注意：使用通配符的技巧
+                * 不要过度使用通配符（能用其他替代就替代）
+                * 尽量不要将通配符置于搜索模式的开始处
+                    * 如：通配符可以放置为&#39;%jet&#39;（前）、&#39;jet%&#39;（后）和&#39;j%et&#39;（中）三种情形。我们假设在查找过程中程序是按照字符顺序匹配进行的，那么&#39;jet%&#39;（后）和&#39;j%et&#39;（中）这两种情况仅需要比较前几个字符，就可以很快得排除掉不符合的对象，继续搜索合适的对象；而&#39;%jet&#39;（前）这种情况，他必须一直进行匹配至最后几个字符才能做出完整的判断，这一过程就浪费了大量的搜索时间。
+        * REGXP:正则表达式
+            * 用法 
+                * SELECT 属性列表 FROM 表 WHERE 属性 REGXP &#39;正则表达式&#39;
+            * REGXP与LIKE的区别
+                * LIKE &#39;属性&#39; 需要列的属性全部匹配 &#39;属性&#39;， 而REGXP 不用
+                    * 如：LIKE &#39;1000&#39; 与 REGXP &#39;1000&#39; ,第一项不能匹配1000.00，而第二项可以
+                  * REGXP可以使用^和$定位符来实现与LIKE相同（匹配整个列） 
+              * MySQL中的正则表达式不区分大小写，可使用BINARY来
         * IS NULL  
         * and  或 &amp;&amp;
         * or  或 || 
         * not  或 !
-
+    3. 运算符的计算次序
+        * 在处理OR之前优先处理AND
+        * 建议使用圆括号（）来明确计算次序
+        * 优先级由低到高排列    运算符
+            1    =(赋值运算）、:=
+            2    ||、OR
+            3    XOR
+            4    &amp;&amp;、AND
+            5    NOT
+            6    BETWEEN、CASE、WHEN、THEN、ELSE
+            7    =(比较运算）、&lt;=&gt;、&gt;=、&gt;、&lt;=、&lt;、&lt;&gt;、!=、 IS、LIKE、REGEXP、IN
+            8    |
+            9    &amp;
+            10    &lt;&lt;、&gt;&gt;
+            11    -(减号）、+
+            12    *、/、%
+            13    ^
+            14    -(负号）、〜（位反转）
+            15    !
+    4. 举例
             -- 查询年龄大于20岁
 
             SELECT * FROM student WHERE age &gt; 20;
@@ -568,6 +601,10 @@
 
     * 注意：
         * 如果有多个排序条件，则当前边的条件值一样时，才会判断第二条件。
+        * 每个排序方式关键词（ASC/DEC）只能指定一个列（直接位于其前面的列）,多列排序时需要分别指定每列的排序方式
+            * 如： SELECT * FROM table1 ORDER BY id DESC , name DESC;
+            * 如果SELECT * FROM table1 ORDER BY id , name DESC;则id默认为升序
+          * 在字典排序中 大写A与小写a 视为相同，MySQL默认这样排序即 a比B(A比b)排在前面。可以更具需要改变这种行为
 
 
 2. 聚合函数：将一列数据作为一个整体，进行纵向的计算。
@@ -709,7 +746,7 @@
     4. 级联操作
         1. 添加级联操作
             语法：ALTER TABLE 表名 ADD CONSTRAINT 外键名称 
-                    FOREIGN KEY (外键字段名称) REFERENCES 主表名称(主表列名称) ON UPDATE CASCADE ON DELETE CASCADE  ;
+                    FOREIGN KEY (外键字段名称) REFERENCES 主表名称(主表列名称) ON UPDATE CASCADE ON DELETE CASCADE ;
         2. 分类：
             1. 级联更新：ON UPDATE CASCADE 
             2. 级联删除：ON DELETE CASCADE </code></pre>
@@ -961,7 +998,7 @@
 
             3. 子查询的结果是多行多列的：
                 * 子查询可以作为一张虚拟表参与查询
-                * 注：虚拟表中不要有分号（提前结束）
+                * 注：虚拟表中不要有分号（不然会提前终止语句）
                 -- 查询员工入职日期是2011-11-11日之后的员工信息和部门信息
                 -- 子查询
                 SELECT * FROM dept t1 ,(SELECT * FROM emp WHERE emp.`join_date` &gt; &#39;2011-11-11&#39;) t2
